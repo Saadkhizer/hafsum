@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Hafsum Coffee & Cake — Tailwind v4 design tokens
+   ============================================================ */
+@theme {
+  --color-cream: #FAF5EC;
+  --color-cream-deep: #F2E9DA;
+  --color-cream-card: #FFFDF8;
+  --color-espresso: #2B1D14;
+  --color-espresso-soft: #4A3527;
+  --color-brown: #6F4A32;
+  --color-caramel: #B97E46;
+  --color-caramel-deep: #9A6435;
+  --color-gold: #D8A95B;
+  --color-muted: #7A6A5B;
+  --color-line: #E3D7C3;
+  --color-success: #3E7C4F;
+  --color-danger: #A8442E;
+
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Inter", -apple-system, "Segoe UI", sans-serif;
+
+  --shadow-soft: 0 6px 24px rgba(43, 29, 20, 0.07);
+  --shadow-lift: 0 16px 40px rgba(43, 29, 20, 0.14);
+
+  --ease-warm: cubic-bezier(0.22, 0.8, 0.32, 1);
+
+  --animate-marquee: marquee 36s linear infinite;
+  --animate-floaty: floaty 7s ease-in-out infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes floaty {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  @apply bg-cream font-body text-espresso antialiased;
+  overflow-x: hidden;
+}
+::selection {
+  @apply bg-caramel text-cream;
+}
+:focus-visible {
+  outline: 3px solid var(--color-caramel);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- scroll-reveal animation (driven by <Reveal>) ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 700ms var(--ease-warm), transform 700ms var(--ease-warm);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 650ms var(--ease-warm), transform 650ms var(--ease-warm);
+}
+.reveal-stagger.is-visible > * {
+  opacity: 1;
+  transform: none;
+}
+.reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0ms; }
+.reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 90ms; }
+.reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 180ms; }
+.reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 270ms; }
+.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 360ms; }
+.reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 450ms; }
+.reveal-stagger.is-visible > *:nth-child(7) { transition-delay: 540ms; }
+.reveal-stagger.is-visible > *:nth-child(8) { transition-delay: 630ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal, .reveal-stagger > * { opacity: 1; transform: none; }
+}

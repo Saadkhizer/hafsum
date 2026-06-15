@@ -1,0 +1,25 @@
+{
+  "name": "hafsum-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Order backend & shop order console API for the Hafsum Coffee & Cake website",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "reset": "node reset.js",
+    "reset:orders": "node reset.js --keep-accounts"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "google-auth-library": "^9.15.0",
+    "jsonwebtoken": "^9.0.2",
+    "lowdb": "^7.0.1",
+    "nanoid": "^5.0.9"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}

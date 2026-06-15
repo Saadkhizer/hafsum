@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Secrets & local environment (keep the .example templates)
+.env
+.env.*
+!.env.example
+*.local
+
+# Order database & its corruption backups (contain customer data)
+db.json
+db.corrupt-*.json
+
+# Old static version of the site (kept on disk, not tracked)
+hafsum-website/
+
+# Local Claude Code / editor config (machine-specific paths)
+.claude/
+.vscode/
+.idea/
+
+# Python build-script caches
+__pycache__/
+*.pyc
+
+# OS / logs
+.DS_Store
+*.log

@@ -1,0 +1,727 @@
+{
+ "vendor": {
+  "name": "Hafsum Coffee & Cake",
+  "address": "Babu Plaza, Plot No 1, Commercial Avenue, Sector A, Bahria Enclave, Islamabad",
+  "phone": "+92518482520",
+  "rating": 4.6,
+  "reviews": 300,
+  "hero": "https://images.deliveryhero.io/image/fd-pk/LH/p61d-listing.jpg",
+  "latitude": 33.6885545,
+  "longitude": 73.2107943,
+  "local_hero": "assets/hero-listing.jpg"
+ },
+ "categories": [
+  {
+   "name": "Breakfast",
+   "desc": "",
+   "items": [
+    {
+     "name": "Scrambled Eggs",
+     "desc": "Two scrambled eggs served with sausages & a hash brown",
+     "price": 975,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/98274261.jpg?width=%s",
+     "local_image": "assets/menu/scrambled-eggs.jpg"
+    },
+    {
+     "name": "Pancakes",
+     "desc": "Three fluffy pancakes topped with banana slices, fresh strawberries, pancake syrup & chocolate sauce",
+     "price": 1125,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/98274262.jpg?width=%s",
+     "local_image": "assets/menu/pancakes.jpg"
+    },
+    {
+     "name": "Waffles",
+     "desc": "Crispy golden waffles topped with fresh strawberries, banana slices, apple slices & a scoop of vanilla ice cream, served with pancake syrup & chocolate sauce",
+     "price": 1375,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/98274263.jpg?width=%s",
+     "local_image": "assets/menu/waffles.jpg"
+    },
+    {
+     "name": "Mushroom & Cheese Omelette",
+     "desc": "Two egg omelette with mushrooms,melted cheese, sausages & a hash brown",
+     "price": 1275,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/98274264.jpg?width=%s",
+     "local_image": "assets/menu/mushroom-cheese-omelette.jpg"
+    },
+    {
+     "name": "Maxican Omelette",
+     "desc": "Two egg Maxican style omelette with vegetables, black olives, sausages, hash brown, herbs & mild spices",
+     "price": 1125,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/98274265.jpg?width=%s",
+     "local_image": "assets/menu/maxican-omelette.jpg"
+    },
+    {
+     "name": "Egg & Cheese Croissant",
+     "desc": "Butter croissant filled with scrambled eggs & melted cheese",
+     "price": 1125,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/98274266.jpg?width=%s",
+     "local_image": "assets/menu/egg-cheese-croissant.jpg"
+    },
+    {
+     "name": "French Toast",
+     "desc": "Golden brown french toast drizzled with chocolate sauce",
+     "price": 1125,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/98274267.jpg?width=%s",
+     "local_image": "assets/menu/french-toast.jpg"
+    },
+    {
+     "name": "Sunny Side Up",
+     "desc": "Two sunny side up eggs served with hash brown & sausages",
+     "price": 1050,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/98274268.jpg?width=%s",
+     "local_image": "assets/menu/sunny-side-up.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Winter Deal",
+   "desc": "",
+   "items": [
+    {
+     "name": "Soup & Sandwich Winter Feast",
+     "desc": "Hot & Sour Soup, Chicken Corn Soup, 6pc Garlic Bread, Club Sandwich and Fries",
+     "price": 2499,
+     "image": "https://images.deliveryhero.io/image/global-menu-service/FP_PK/vendor/p61d/product/ff761da9-d5cf-49b5-9c11-21b384c286b1.jpg?width=%s",
+     "local_image": "assets/menu/soup-sandwich-winter-feast.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Cakes",
+   "desc": "",
+   "items": [
+    {
+     "name": "Coffee Cake",
+     "desc": "A moist, fluffy cake with a rich coffee flavor, perfectly balanced with a hint of sweetness.",
+     "price": 3600,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/63705504.jpg?width=%s",
+     "local_image": "assets/menu/coffee-cake.jpg"
+    },
+    {
+     "name": "Red Velvet Cake",
+     "desc": "A moist and tender cake, layered with rich cream cheese frosting, offering a perfect balance of sweetness, smooth texture, and vibrant color.",
+     "price": 2700,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/63705508.jpg?width=%s",
+     "local_image": "assets/menu/red-velvet-cake.jpg"
+    },
+    {
+     "name": "NY Cheesecake",
+     "desc": "A rich, creamy, and smooth baked cheesecake with a dense texture and classic vanilla flavor on a buttery biscuit crust",
+     "price": 999,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/63705510.jpg?width=%s",
+     "local_image": "assets/menu/ny-cheesecake.jpg"
+    },
+    {
+     "name": "Snickers Bar Cake",
+     "desc": "A rich chocolate cake layered with caramel, peanuts, and fudgy Snickers bar chunks.",
+     "price": 3999,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/85013702.jpg?width=%s",
+     "local_image": "assets/menu/snickers-bar-cake.jpg"
+    },
+    {
+     "name": "Raffaello White Chocolate Cake",
+     "desc": "A light, creamy white chocolate cake infused with coconut flavor and finished with a smooth, elegant frosting.",
+     "price": 2700,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/98427221.jpg?width=%s",
+     "local_image": "assets/menu/raffaello-white-chocolate-cake.jpg"
+    },
+    {
+     "name": "San Sebastian Cheesecake",
+     "desc": "A rich, ultra-creamy burnt cheesecake with a caramelized top and soft, melt-in-the-mouth center.",
+     "price": 7999,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/98427224.jpg?width=%s",
+     "local_image": "assets/menu/san-sebastian-cheesecake.jpg"
+    },
+    {
+     "name": "Roasted Almond Cake",
+     "desc": "A soft, buttery cake made with roasted almonds, offering a rich nutty flavor and delicate crumb.",
+     "price": 3400,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/98427225.jpg?width=%s",
+     "local_image": "assets/menu/roasted-almond-cake.jpg"
+    },
+    {
+     "name": "Almond Dry Cake",
+     "desc": "A light, crumbly cake made with finely ground almonds, offering a delicate nutty flavor and crisp texture.",
+     "price": 3199,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/98427226.jpg?width=%s",
+     "local_image": "assets/menu/almond-dry-cake.jpg"
+    },
+    {
+     "name": "Mixed Dry Fruit Cake",
+     "desc": "A rich, moist cake packed with a flavorful blend of premium dry fruits and nuts.",
+     "price": 3600,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/98427227.jpg?width=%s",
+     "local_image": "assets/menu/mixed-dry-fruit-cake.jpg"
+    },
+    {
+     "name": "Plain Tea Cake",
+     "desc": "A soft, buttery plain tea cake with a light crumb and comforting homemade flavor.",
+     "price": 699,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/98427860.jpg?width=%s",
+     "local_image": "assets/menu/plain-tea-cake.jpg"
+    },
+    {
+     "name": "Marble Cake",
+     "desc": "A soft, moist cake beautifully swirled with rich chocolate and classic vanilla flavors.",
+     "price": 720,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/98427861.jpg?width=%s",
+     "local_image": "assets/menu/marble-cake.jpg"
+    },
+    {
+     "name": "Dream Cake",
+     "desc": "A rich, indulgent chocolate cake layered with silky cream and topped with luscious ganache for a truly dreamy treat.",
+     "price": 1499,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/98427863.jpg?width=%s",
+     "local_image": "assets/menu/dream-cake.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Pastries & Eclairs",
+   "desc": "",
+   "items": [
+    {
+     "name": "Ferroro Bliss Pastry",
+     "desc": "A decadent pastry filled with smooth Ferrero Rocher chocolate and hazelnut cream, encased in a light, flaky pastry shell.",
+     "price": 360,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/83212938.jpg?width=%s",
+     "local_image": "assets/menu/ferroro-bliss-pastry.jpg"
+    },
+    {
+     "name": "Chocolate Eclair",
+     "desc": "A delicate, light choux pastry filled with rich, creamy chocolate and topped with a smooth chocolate glaze for the perfect indulgence.",
+     "price": 300,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/83678730.jpg?width=%s",
+     "local_image": "assets/menu/chocolate-eclair.jpg"
+    },
+    {
+     "name": "Caramel Eclair",
+     "desc": "A light and airy pastry filled with smooth caramel cream and topped with rich caramel glaze.",
+     "price": 300,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/84167542.jpg?width=%s",
+     "local_image": "assets/menu/caramel-eclair.jpg"
+    },
+    {
+     "name": "Chocolate Cake Pops",
+     "desc": "Indulge in our chocolate cake pops - decadent, bite-sized treats that are perfect for satisfying your chocolate cravings!\"",
+     "price": 250,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/96805882.jpg?width=%s",
+     "local_image": "assets/menu/chocolate-cake-pops.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Muffins",
+   "desc": "",
+   "items": [
+    {
+     "name": "Vanilla Muffin",
+     "desc": "A soft and fluffy vanilla muffin with a delicate, buttery flavor.",
+     "price": 425,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/84028903.jpg?width=%s",
+     "local_image": "assets/menu/vanilla-muffin.jpg"
+    },
+    {
+     "name": "Chocolate Muffin",
+     "desc": "A rich and moist chocolate muffin with a deep cocoa flavor and a soft, fluffy texture.",
+     "price": 425,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/84028904.jpg?width=%s",
+     "local_image": "assets/menu/chocolate-muffin.jpg"
+    },
+    {
+     "name": "Marble Muffin",
+     "desc": "A moist apple cinnamon muffin bursting with warm spices and juicy apple bits.",
+     "price": 425,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/84028905.jpg?width=%s",
+     "local_image": "assets/menu/marble-muffin.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Sandwiches &  Panini ",
+   "desc": "",
+   "items": [
+    {
+     "name": "Cold Club Sandwich",
+     "desc": "A classic sandwich made with layers of sliced turkey or chicken, crispy bacon, fresh lettuce, tomato, and mayonnaise, stacked between three slices of soft bread for a refreshing and satisfying meal.",
+     "price": 1199,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/63705450.jpg?width=%s",
+     "local_image": "assets/menu/cold-club-sandwich.jpg"
+    },
+    {
+     "name": "Cold Chicken Grilled with Cheese Sandwich",
+     "desc": "A hearty sandwich featuring grilled chicken, melted cheese, and fresh vegetables, all stacked between slices of soft bread for a flavorful and satisfying meal, served chilled for a refreshing twist.",
+     "price": 699,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/63705449.jpg?width=%s",
+     "local_image": "assets/menu/cold-chicken-grilled-with-cheese-sandwich.jpg"
+    },
+    {
+     "name": "Cold Chicken Salad Sandwich",
+     "desc": "A refreshing sandwich made with tender chicken mixed with creamy mayo, crunchy vegetables, and a hint of seasoning, served between soft bread for a light and flavorful meal.",
+     "price": 699,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/63705453.jpg?width=%s",
+     "local_image": "assets/menu/cold-chicken-salad-sandwich.jpg"
+    },
+    {
+     "name": "Hot BBQ Chicken Sandwich",
+     "desc": "A deliciously smoky and tangy sandwich made with tender grilled chicken smothered in BBQ sauce, topped with melted cheese and fresh veggies, all served on a toasted bun for a satisfying meal",
+     "price": 1199,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/63705451.jpg?width=%s",
+     "local_image": "assets/menu/hot-bbq-chicken-sandwich.jpg"
+    },
+    {
+     "name": "Hot Grilled Chicken Panini Sandwich",
+     "desc": "A warm, crispy sandwich made with grilled chicken, melted cheese, and fresh veggies, pressed between two slices of crusty bread for a savory and satisfying bite.",
+     "price": 1999,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/63705454.jpg?width=%s",
+     "local_image": "assets/menu/hot-grilled-chicken-panini-sandwich.jpg"
+    },
+    {
+     "name": "Hot Club Sandwich",
+     "desc": "A toasted sandwich layered with tender chicken or turkey, crispy bacon, fresh lettuce, tomato, and mayonnaise, creating a delicious and satisfying bite with a perfect balance of flavors.",
+     "price": 1999,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/63705455.jpg?width=%s",
+     "local_image": "assets/menu/hot-club-sandwich.jpg"
+    },
+    {
+     "name": "Grilled Cheese Sandwich",
+     "desc": "A warm and crispy sandwich made with melted cheese between two slices of buttery, toasted bread, offering a simple yet delicious comfort food experience.",
+     "price": 799,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/80000348.jpg?width=%s",
+     "local_image": "assets/menu/grilled-cheese-sandwich.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Savouries",
+   "desc": "",
+   "items": [
+    {
+     "name": "Fettuccine Allfredo With 2 Piece Garlic",
+     "desc": "Creamy and rich Alfredo sauce tossed with tender fettuccine pasta, served with two pieces of warm, buttery garlic bread for a satisfying and indulgent meal.",
+     "price": 2099,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/79904065.jpg?width=%s",
+     "local_image": "assets/menu/fettuccine-allfredo-with-2-piece-garlic.jpg"
+    },
+    {
+     "name": "Chicken Chowmein",
+     "desc": "Stir-fried noodles tossed with tender chicken, crisp vegetables, and savory sauces, delivering a flavorful and satisfying classic dish.",
+     "price": 1599,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/79904070.jpg?width=%s",
+     "local_image": "assets/menu/chicken-chowmein.jpg"
+    },
+    {
+     "name": "Chicken Macaronis With Veggies",
+     "desc": "Perfectly cooked macaroni combined with tender chicken and a colorful mix of fresh vegetables, tossed in a savory sauce for a hearty and flavorful dish.",
+     "price": 1699,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/79904063.jpg?width=%s",
+     "local_image": "assets/menu/chicken-macaronis-with-veggies.jpg"
+    },
+    {
+     "name": "Mini Pizza",
+     "desc": "Bite-sized pizzas topped with zesty tomato sauce, melted cheese, and a variety of fresh toppings, baked to golden perfection for a delicious snack or appetizer.",
+     "price": 425,
+     "image": "https://images.deliveryhero.io/image/global-menu-service/FP_PK/vendor/p61d/product/82715224/6c04940f-ff21-42d0-a8e9-563c10750195.jpg?width=%s",
+     "local_image": "assets/menu/mini-pizza.jpg"
+    },
+    {
+     "name": "Pizza Roll",
+     "desc": "Crispy golden roll filled with cheesy, saucy pizza goodness in every bite.",
+     "price": 425,
+     "image": "https://images.deliveryhero.io/image/global-menu-service/FP_PK/vendor/p61d/product/66393161/695e5dac-a90f-4b34-8d7c-2c39df22d556.jpg?width=%s",
+     "local_image": "assets/menu/pizza-roll.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Soups",
+   "desc": "",
+   "items": [
+    {
+     "name": "Hot N Sour Soup",
+     "desc": "Hot and sour soup — a flavorful, tangy, and spicy Chinese soup made with vegetables, chicken, and a rich, zesty broth.",
+     "price": 850,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/77508242.jpg?width=%s",
+     "local_image": "assets/menu/hot-n-sour-soup.jpg"
+    },
+    {
+     "name": "Cream Of Mushroom Soup",
+     "desc": "A rich and creamy soup made with fresh mushrooms, sautéed onions, and a velvety base, offering a comforting and flavorful experience in every spoonful.",
+     "price": 1199,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/79904059.jpg?width=%s",
+     "local_image": "assets/menu/cream-of-mushroom-soup.jpg"
+    },
+    {
+     "name": "Chicken Corn Soup",
+     "desc": "A comforting blend of tender chicken, sweet corn, and savory broth, creating a warm and flavorful classic soup perfect for any occasion.",
+     "price": 850,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/79904064.jpg?width=%s",
+     "local_image": "assets/menu/chicken-corn-soup.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Assorted Fries",
+   "desc": "",
+   "items": [
+    {
+     "name": "Nacho Style Fries",
+     "desc": "Serve with Special Sauce",
+     "price": 1199,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/63705456.jpg?width=%s",
+     "local_image": "assets/menu/nacho-style-fries.jpg"
+    },
+    {
+     "name": "Loaded Cheese Fries",
+     "desc": "Special sauce",
+     "price": 1199,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/63705458.jpg?width=%s",
+     "local_image": "assets/menu/loaded-cheese-fries.jpg"
+    },
+    {
+     "name": "Chicken Loaded Fries",
+     "desc": "French fries topped with bite-size chicken pieces overflowing with melted mozzarella cheese",
+     "price": 1699,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/63705459.jpg?width=%s",
+     "local_image": "assets/menu/chicken-loaded-fries.jpg"
+    },
+    {
+     "name": "Onion Garlic & Flavored Fries",
+     "desc": "Crispy, savory, and utterly addictive! Our Onion Garlic Fries are smothered in a rich blend of caramelized onions and aromatic garlic. Perfect for snacking or pairing with your favorite meal",
+     "price": 1050,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/63705457.jpg?width=%s",
+     "local_image": "assets/menu/onion-garlic-flavored-fries.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Customized Cake (Pre Order Before 24HRS)",
+   "desc": "",
+   "items": [
+    {
+     "name": "4 Pound Cake Fudge Flavor",
+     "desc": "Vanilla & Chocolate Flavors customer Choice",
+     "price": 8280,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/65891506.jpg?width=%s",
+     "local_image": "assets/menu/4-pound-cake-fudge-flavor.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Donuts",
+   "desc": "",
+   "items": [
+    {
+     "name": "Caramel Donut",
+     "desc": "Donuts",
+     "price": 300,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/81097297.jpg?width=%s",
+     "local_image": "assets/menu/caramel-donut.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Cupcakes",
+   "desc": "",
+   "items": [
+    {
+     "name": "Ferrero Cupcake",
+     "desc": "A decadent Ferrero Rocher cupcake with a rich chocolate hazelnut base, filled with creamy Nutella, and topped with silky hazelnut frosting.",
+     "price": 399,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/84167539.jpg?width=%s",
+     "local_image": "assets/menu/ferrero-cupcake.jpg"
+    },
+    {
+     "name": "Mini Lotus Cupcake",
+     "desc": "\"Indulge in our mini Lotus cupcakes, packed with Biscoff flavor and crunchy texture. Perfect for a sweet pick-me-up!\"",
+     "price": 399,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/96805883.jpg?width=%s",
+     "local_image": "assets/menu/mini-lotus-cupcake.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Dry Cakes",
+   "desc": "",
+   "items": [
+    {
+     "name": "Bento Cake",
+     "desc": "A small, cute, and individually portioned cake, often decorated with delicate icing and toppings, offering a personal-sized treat perfect for special occasions or as a sweet indulgence.",
+     "price": 1600,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/80000339.jpg?width=%s",
+     "local_image": "assets/menu/bento-cake.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Desserts",
+   "desc": "",
+   "items": [
+    {
+     "name": "Lotus Parfait",
+     "desc": "Sundae",
+     "price": 520,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/63705487.jpg?width=%s",
+     "local_image": "assets/menu/lotus-parfait.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Pie & Tarts",
+   "desc": "",
+   "items": [
+    {
+     "name": "Mini Lemon Tart",
+     "desc": "A buttery crust filled with tangy, smooth lemon curd for a refreshing citrus treat.",
+     "price": 360,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/63705488.jpg?width=%s",
+     "local_image": "assets/menu/mini-lemon-tart.jpg"
+    },
+    {
+     "name": "Mini Chocolate Tart",
+     "desc": "A crunchy pastry filled with rich, creamy chocolate for a delicious treat.",
+     "price": 420,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/83678728.jpg?width=%s",
+     "local_image": "assets/menu/mini-chocolate-tart.jpg"
+    },
+    {
+     "name": "Mini Apple Pie",
+     "desc": "Country style Apple Pie in a buttery crust, apple filling with cinnamon, nutmeg and lemon juice and brown sugar.",
+     "price": 300,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/65364111.jpg?width=%s",
+     "local_image": "assets/menu/mini-apple-pie.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Brownies",
+   "desc": "",
+   "items": [
+    {
+     "name": "Fudge Brownie",
+     "desc": "A rich, dense, and decadent chocolate brownie with a fudgy center and a slightly crispy top, offering a perfect balance of sweetness and chocolate flavor.",
+     "price": 550,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/63705498.jpg?width=%s",
+     "local_image": "assets/menu/fudge-brownie.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Croissant ",
+   "desc": "",
+   "items": [
+    {
+     "name": "Cookie Dough Croissant",
+     "desc": "Croissant filled with cookie dough, resulting in a flaky crispy exterior and a ooey gooey interior from the underbaked cookie dough.",
+     "price": 360,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/63705501.jpg?width=%s",
+     "local_image": "assets/menu/cookie-dough-croissant.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Breads",
+   "desc": "",
+   "items": [
+    {
+     "name": "Milky Bread",
+     "desc": "Experience the perfect Milky Bread, a soft and fluffy bread immersed with the sweetness of milk. A delicate crumb that melts in your mouth.",
+     "price": 299,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/63705494.jpg?width=%s",
+     "local_image": "assets/menu/milky-bread.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Salads",
+   "desc": "",
+   "items": [
+    {
+     "name": "Caesar Salad",
+     "desc": "A tossed salad usually made of romaine, garlic, anchovies, and croutons and dressed with olive oil, coddled egg, lemon juice, and grated cheese",
+     "price": 920,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/63705497.jpg?width=%s",
+     "local_image": "assets/menu/caesar-salad.jpg"
+    },
+    {
+     "name": "Macaroni Salad",
+     "desc": "Salads",
+     "price": 630,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/65999696.jpg?width=%s",
+     "local_image": "assets/menu/macaroni-salad.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Mocktails",
+   "desc": "",
+   "items": [
+    {
+     "name": "Shark Bite",
+     "desc": "Mocktails",
+     "price": 870,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/63705473.jpg?width=%s",
+     "local_image": "assets/menu/shark-bite.jpg"
+    },
+    {
+     "name": "Pina Colada",
+     "desc": "Smoothies",
+     "price": 1110,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/63705477.jpg?width=%s",
+     "local_image": "assets/menu/pina-colada.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Coffee",
+   "desc": "Hot & cold",
+   "items": [
+    {
+     "name": "Espresso",
+     "desc": "A bold, concentrated shot of espresso with rich aroma, intense flavor, and a smooth crema on top.",
+     "price": 390,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/63705460.jpg?width=%s",
+     "local_image": "assets/menu/espresso.jpg"
+    },
+    {
+     "name": "Americano",
+     "desc": "A simple and strong coffee made by diluting espresso with hot water, resulting in a smooth and bold flavor with a lighter body compared to straight espresso.",
+     "price": 390,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/63705461.jpg?width=%s",
+     "local_image": "assets/menu/americano.jpg"
+    },
+    {
+     "name": "Cappuccino",
+     "desc": "A classic espresso-based drink made with equal parts espresso, steamed milk, and milk foam, creating a rich, bold coffee flavor with a creamy, frothy texture on top.",
+     "price": 690,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/63705463.jpg?width=%s",
+     "local_image": "assets/menu/cappuccino.jpg"
+    },
+    {
+     "name": "Mocha",
+     "desc": "A delicious espresso-based drink made with steamed milk, rich chocolate syrup, and a shot of espresso, creating a perfect balance of coffee and chocolate flavors, often topped with whipped cream.",
+     "price": 700,
+     "image": "https://images.deliveryhero.io/image/fd-pk/products/63705466.jpg?width=%s",
+     "local_image": "assets/menu/mocha.jpg"
+    },
+    {
+     "name": "Hot Chocolate",
+     "desc": "A rich and creamy beverage made with melted chocolate and warm milk, topped with whipped cream or marshmallows for a comforting and indulgent treat.",
+     "price": 700,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/63705467.jpg?width=%s",
+     "local_image": "assets/menu/hot-chocolate.jpg"
+    },
+    {
+     "name": "Irish Latte",
+     "desc": "A creamy and flavorful espresso-based drink made with steamed milk and Irish whiskey-flavored syrup, offering a warm and comforting blend of coffee richness and subtle Irish sweetness.",
+     "price": 700,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/80000344.jpg?width=%s",
+     "local_image": "assets/menu/irish-latte.jpg"
+    },
+    {
+     "name": "White Hot Chocolate Coffee",
+     "desc": "A smooth and creamy drink made with melted white chocolate and warm milk offering",
+     "price": 700,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/80000345.jpg?width=%s",
+     "local_image": "assets/menu/white-hot-chocolate-coffee.jpg"
+    },
+    {
+     "name": "White Mocha",
+     "desc": "A creamy and indulgent espresso-based drink made with white chocolate syrup, steamed milk, and a shot of espresso, offering a sweet and smooth coffee experience, often topped with whipped cream.",
+     "price": 700,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/80000346.jpg?width=%s",
+     "local_image": "assets/menu/white-mocha.jpg"
+    },
+    {
+     "name": "Hazelnut Latte",
+     "desc": "A smooth and creamy espresso-based coffee drink combined with steamed milk and flavored with sweet hazelnut syrup, offering a perfect balance of nutty sweetness and rich coffee flavor.",
+     "price": 700,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/80000349.jpg?width=%s",
+     "local_image": "assets/menu/hazelnut-latte.jpg"
+    },
+    {
+     "name": "Hazelnut Latte",
+     "desc": "A smooth espresso blended with creamy milk and sweet, nutty hazelnut flavor.",
+     "price": 870,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/98466499.jpg?width=%s",
+     "local_image": "assets/menu/hazelnut-latte-coffee.jpg"
+    },
+    {
+     "name": "Café Latte",
+     "desc": "A smooth and creamy blend of rich espresso and steamed milk, finished with a light frothy top.",
+     "price": 690,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/98466500.jpg?width=%s",
+     "local_image": "assets/menu/caf-latte.jpg"
+    },
+    {
+     "name": "Caramel Latte",
+     "desc": "A rich espresso mixed with steamed milk and drizzled with sweet, buttery caramel.",
+     "price": 870,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/98466501.jpg?width=%s",
+     "local_image": "assets/menu/caramel-latte.jpg"
+    },
+    {
+     "name": "Vanilla Latte",
+     "desc": "A smooth espresso combined with creamy steamed milk and a touch of sweet vanilla.",
+     "price": 870,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/98466502.jpg?width=%s",
+     "local_image": "assets/menu/vanilla-latte.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Flavored Coffee",
+   "desc": "",
+   "items": [
+    {
+     "name": "Hazelnut Coffee",
+     "desc": "Coffee variety infused with the sweet and nutty essence of hazelnuts.",
+     "price": 865,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/63705479.jpg?width=%s",
+     "local_image": "assets/menu/hazelnut-coffee.jpg"
+    },
+    {
+     "name": "Caramel Coffee",
+     "desc": "Caramel Coffee and be greeted by the enticing aroma of freshly brewed coffee intertwined with buttery caramel",
+     "price": 865,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/63705480.jpg?width=%s",
+     "local_image": "assets/menu/caramel-coffee.jpg"
+    },
+    {
+     "name": "Vanish Irish Coffee",
+     "desc": "Bold coffee with smooth cream",
+     "price": 865,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/63705481.jpg?width=%s",
+     "local_image": "assets/menu/vanish-irish-coffee.jpg"
+    },
+    {
+     "name": "Chocolate Coffee",
+     "desc": "Hot coffee with smooth chocolate blend",
+     "price": 865,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/63705482.jpg?width=%s",
+     "local_image": "assets/menu/chocolate-coffee.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Beverages",
+   "desc": "",
+   "items": [
+    {
+     "name": "Lemonade",
+     "desc": "A refreshing blend of tangy lemon juice, chilled water, and a touch of sweetness.",
+     "price": 450,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/63705469.jpg?width=%s",
+     "local_image": "assets/menu/lemonade.jpg"
+    },
+    {
+     "name": "Mint Margarita",
+     "desc": "A refreshing blend of zesty lemon, cool mint, and crushed ice for a perfect summer chill.",
+     "price": 499,
+     "image": "https://images.deliveryhero.io/image/fd-pk/Products/63705470.jpg?width=%s",
+     "local_image": "assets/menu/mint-margarita.jpg"
+    }
+   ]
+  }
+ ]
+}
