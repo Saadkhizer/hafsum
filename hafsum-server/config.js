@@ -14,7 +14,15 @@ export const SHOP = {
 
 export const ENV = {
   port: Number(process.env.PORT) || 4000,
+  // Where db.json lives. Leave blank to keep it next to the server (fine for a VPS).
+  // On hosts with ephemeral disks (Render/Railway/Docker), point this at a mounted
+  // volume so orders & accounts survive redeploys.
+  dataDir: process.env.DATA_DIR || '',
   jwtSecret: process.env.JWT_SECRET || 'dev-insecure-secret',
+  // Customer Google sign-in. Empty = Google login is OFF (the dev login still works).
+  // Set this to a real OAuth Client ID from Google Cloud Console to turn it on. The
+  // frontend reads this value from /api/config, so flipping it on needs no frontend
+  // rebuild — just set GOOGLE_CLIENT_ID here and restart.
   googleClientId: process.env.GOOGLE_CLIENT_ID || '',
   allowDevLogin: String(process.env.ALLOW_DEV_LOGIN).toLowerCase() !== 'false',
   adminEmail: (process.env.ADMIN_EMAIL || '').toLowerCase(),

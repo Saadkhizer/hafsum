@@ -1,0 +1,40 @@
+# Render Blueprint for the Hafsum site (one web service: Node API that also serves
+# the built React frontend). Deploy by pushing this repo, then in the Render dashboard
+# choose "New +" → "Blueprint" and point it at this repo.
+#
+# A disk is attached so orders & accounts (db.json) survive redeploys — this requires
+# a paid instance type (the free tier has no persistent disk).
+services:
+  - type: web
+    name: hafsum
+    runtime: node
+    rootDir: hafsum-server
+    plan: starter
+    buildCommand: npm install && npm run build:web
+    startCommand: npm start
+    healthCheckPath: /api/health
+    disk:
+      name: hafsum-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      # Keep db.json on the mounted disk so it persists across deploys.
+      - key: DATA_DIR
+        value: /var/data
+      # Turn the no-setup demo login OFF in production.
+      - key: ALLOW_DEV_LOGIN
+        value: "false"
+      # Render generates a strong secret once and reuses it (keeps logins valid across deploys).
+      - key: JWT_SECRET
+        generateValue: true
+      # Fill these in the Render dashboard (marked sync:false so they aren't committed).
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: ADMIN_GOOGLE_EMAILS
+        sync: false

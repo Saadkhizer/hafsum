@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
-import { CONFIG } from '../config.js';
+import { useServerConfig } from '../context/ServerConfigContext.jsx';
 import Button from '../components/Button.jsx';
 import GoogleButton from '../components/GoogleButton.jsx';
 import { Cup } from '../components/Icons.jsx';
 
 export default function Login() {
   const { loginWithGoogle, devLogin, adminLogin } = useAuth();
+  const { ready, googleEnabled, devLoginEnabled } = useServerConfig();
   const [params] = useSearchParams();
   const navigate = useNavigate();
 
@@ -66,34 +67,51 @@ export default function Login() {
         )}
 
         {tab === 'customer' ? (
+          !ready ? (
+            <p className="py-6 text-center text-[13.5px] text-muted">Loading sign-in options…</p>
+          ) : (
           <div className="grid gap-4">
-            <GoogleButton onCredential={(cred) => run(() => loginWithGoogle(cred), next)} onError={setError} />
+            {googleEnabled && (
+              <GoogleButton onCredential={(cred) => run(() => loginWithGoogle(cred), next)} onError={setError} />
+            )}
 
-            {CONFIG.googleClientId && (
+            {googleEnabled && devLoginEnabled && (
               <div className="flex items-center gap-3 text-[12.5px] text-muted">
                 <span className="h-px flex-1 bg-line" />or<span className="h-px flex-1 bg-line" />
               </div>
             )}
 
-            <div className="grid gap-2.5">
-              <label className="text-[13px] font-semibold text-espresso-soft" htmlFor="dev-name">
-                {CONFIG.googleClientId ? 'Continue without Google' : 'Your name'}
-              </label>
-              <input
-                id="dev-name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="e.g. Ayesha Khan"
-                className="min-h-[48px] rounded-xl border-[1.5px] border-line bg-cream px-4 text-[15px] focus:border-caramel focus:outline-none"
-              />
-              <Button variant="caramel" disabled={busy} onClick={() => run(() => devLogin(name || 'Guest'), next)}>
-                {busy ? 'Signing in…' : 'Continue to order'}
-              </Button>
-            </div>
-            <p className="text-center text-[12px] text-muted">
-              A quick guest sign-in for now — connect Google any time.
-            </p>
+            {devLoginEnabled && (
+              <div className="grid gap-2.5">
+                <label className="text-[13px] font-semibold text-espresso-soft" htmlFor="dev-name">
+                  {googleEnabled ? 'Continue without Google' : 'Your name'}
+                </label>
+                <input
+                  id="dev-name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="e.g. Ayesha Khan"
+                  className="min-h-[48px] rounded-xl border-[1.5px] border-line bg-cream px-4 text-[15px] focus:border-caramel focus:outline-none"
+                />
+                <Button variant="caramel" disabled={busy} onClick={() => run(() => devLogin(name || 'Guest'), next)}>
+                  {busy ? 'Signing in…' : 'Continue to order'}
+                </Button>
+              </div>
+            )}
+
+            {!googleEnabled && devLoginEnabled && (
+              <p className="text-center text-[12px] text-muted">
+                A quick guest sign-in for now — connect Google any time.
+              </p>
+            )}
+
+            {!googleEnabled && !devLoginEnabled && (
+              <p className="py-6 text-center text-[13.5px] text-muted">
+                Customer sign-in isn’t available right now. Please contact the shop to place your order.
+              </p>
+            )}
           </div>
+          )
         ) : (
           <form
             className="grid gap-3"

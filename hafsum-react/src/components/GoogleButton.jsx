@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { CONFIG } from '../config.js';
+import { useServerConfig } from '../context/ServerConfigContext.jsx';
 
 const GIS_SRC = 'https://accounts.google.com/gsi/client';
 
@@ -26,15 +26,16 @@ function loadGis() {
  */
 export default function GoogleButton({ onCredential, onError }) {
   const ref = useRef(null);
+  const { googleClientId } = useServerConfig();
 
   useEffect(() => {
-    if (!CONFIG.googleClientId) return;
+    if (!googleClientId) return;
     let cancelled = false;
     loadGis()
       .then(() => {
         if (cancelled || !ref.current) return;
         window.google.accounts.id.initialize({
-          client_id: CONFIG.googleClientId,
+          client_id: googleClientId,
           callback: ({ credential }) => onCredential(credential),
         });
         window.google.accounts.id.renderButton(ref.current, {
@@ -43,8 +44,8 @@ export default function GoogleButton({ onCredential, onError }) {
       })
       .catch((e) => onError?.(e.message));
     return () => { cancelled = true; };
-  }, [onCredential, onError]);
+  }, [googleClientId, onCredential, onError]);
 
-  if (!CONFIG.googleClientId) return null;
+  if (!googleClientId) return null;
   return <div ref={ref} className="flex justify-center" aria-label="Sign in with Google" />;
 }

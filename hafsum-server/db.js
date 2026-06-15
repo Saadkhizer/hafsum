@@ -1,7 +1,7 @@
 import { existsSync, readFileSync, renameSync } from 'node:fs';
+import path from 'node:path';
 import { JSONFilePreset } from 'lowdb/node';
-
-const DB_PATH = new URL('./db.json', import.meta.url);
+import { DB_PATH, corruptBackupPath } from './paths.js';
 
 // If db.json exists but isn't valid JSON, the server would crash on startup.
 // Back the bad file up and let lowdb recreate a fresh one instead.
@@ -9,9 +9,9 @@ if (existsSync(DB_PATH)) {
   try {
     JSON.parse(readFileSync(DB_PATH, 'utf8'));
   } catch {
-    const backup = new URL(`./db.corrupt-${Date.now()}.json`, import.meta.url);
+    const backup = corruptBackupPath();
     renameSync(DB_PATH, backup);
-    console.warn(`⚠️  db.json was corrupted — moved it to ${backup.pathname.split('/').pop()} and starting fresh.`);
+    console.warn(`⚠️  db.json was corrupted — moved it to ${path.basename(backup)} and starting fresh.`);
   }
 }
 

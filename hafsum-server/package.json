@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
+    "build:web": "npm --prefix ../hafsum-react install && npm --prefix ../hafsum-react run build",
     "reset": "node reset.js",
     "reset:orders": "node reset.js --keep-accounts"
   },
