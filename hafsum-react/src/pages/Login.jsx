@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext.jsx';
 import { useServerConfig } from '../context/ServerConfigContext.jsx';
 import Button from '../components/Button.jsx';
 import GoogleButton from '../components/GoogleButton.jsx';
-import { Cup } from '../components/Icons.jsx';
+import { Cup, Eye, EyeOff } from '../components/Icons.jsx';
 
 export default function Login() {
   const { loginWithGoogle, devLogin, adminLogin } = useAuth();
@@ -21,6 +21,7 @@ export default function Login() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const run = async (fn, dest) => {
     setBusy(true);
@@ -123,11 +124,21 @@ export default function Login() {
               placeholder="Shop email" autoComplete="username" required
               className="min-h-[48px] rounded-xl border-[1.5px] border-line bg-cream px-4 text-[15px] focus:border-caramel focus:outline-none"
             />
-            <input
-              type="password" value={password} onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password" autoComplete="current-password" required
-              className="min-h-[48px] rounded-xl border-[1.5px] border-line bg-cream px-4 text-[15px] focus:border-caramel focus:outline-none"
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? 'text' : 'password'} value={password} onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password" autoComplete="current-password" required
+                className="min-h-[48px] w-full rounded-xl border-[1.5px] border-line bg-cream px-4 pr-12 text-[15px] focus:border-caramel focus:outline-none"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((v) => !v)}
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+                className="absolute inset-y-0 right-0 grid w-12 cursor-pointer place-items-center text-muted transition-colors hover:text-espresso"
+              >
+                {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+              </button>
+            </div>
             <Button variant="primary" type="submit" disabled={busy}>
               {busy ? 'Signing in…' : 'Open order console'}
             </Button>

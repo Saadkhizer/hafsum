@@ -5,6 +5,7 @@ import { useAuth } from '../context/AuthContext.jsx';
 export default function AccountMenu() {
   const { isAuthed, isAdmin, user, logout, ready } = useAuth();
   const [open, setOpen] = useState(false);
+  const [imgError, setImgError] = useState(false);
   const ref = useRef(null);
   const navigate = useNavigate();
 
@@ -31,8 +32,8 @@ export default function AccountMenu() {
     <div className="relative" ref={ref}>
       <button onClick={() => setOpen((o) => !o)} aria-haspopup="menu" aria-expanded={open}
         className="flex h-12 items-center gap-2 rounded-full border-[1.5px] border-line bg-cream-card pl-2 pr-3.5 text-espresso transition-all duration-200 hover:border-caramel hover:shadow-soft">
-        {user.picture
-          ? <img src={user.picture} alt="" className="h-8 w-8 rounded-full object-cover" />
+        {user.picture && !imgError
+          ? <img src={user.picture} alt="" referrerPolicy="no-referrer" onError={() => setImgError(true)} className="h-8 w-8 rounded-full object-cover" />
           : <span className="flex h-8 w-8 items-center justify-center rounded-full bg-espresso text-[14px] font-bold text-gold">{initial}</span>}
         <span className="max-w-[110px] truncate text-[14.5px] font-semibold max-[520px]:hidden">{user.name?.split(' ')[0] || 'Account'}</span>
       </button>
