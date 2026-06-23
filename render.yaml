@@ -1,39 +1,43 @@
-# Render Blueprint for the Hafsum site (one web service: Node API that also serves
-# the built React frontend). Deploy by pushing this repo, then in the Render dashboard
-# choose "New +" → "Blueprint" and point it at this repo.
+# Render Blueprint for the Hafsum site — ONE web service: a Node API that also serves
+# the built React frontend. Deploy: push this repo, then in the Render dashboard choose
+# "New +" → "Blueprint" and point it at this repo.
 #
-# A disk is attached so orders & accounts (db.json) survive redeploys — this requires
-# a paid instance type (the free tier has no persistent disk).
+# ── THIS FILE IS SET FOR A FREE CLIENT DEMO ──────────────────────────────────────────
+#   • plan: free          → $0, but the service sleeps after ~15 min idle (first visit
+#                           after sleeping takes ~30-60s to wake), and there is NO disk,
+#                           so demo orders/accounts reset on each redeploy. Fine to show.
+#   • To GO LIVE for real (orders must persist), switch to the paid setup below:
+#       plan: starter
+#       add a disk:  { name: hafsum-data, mountPath: /var/data, sizeGB: 1 }
+#       add env var: DATA_DIR = /var/data
+#       set ALLOW_DEV_LOGIN = false
+# ─────────────────────────────────────────────────────────────────────────────────────
 services:
   - type: web
     name: hafsum
     runtime: node
     rootDir: hafsum-server
-    plan: starter
+    plan: free
     buildCommand: npm install && npm run build:web
     startCommand: npm start
     healthCheckPath: /api/health
-    disk:
-      name: hafsum-data
-      mountPath: /var/data
-      sizeGB: 1
     envVars:
       - key: NODE_VERSION
         value: "20"
-      # Keep db.json on the mounted disk so it persists across deploys.
-      - key: DATA_DIR
-        value: /var/data
-      # Turn the no-setup demo login OFF in production.
+      # Demo: leave the no-setup guest/"dev" login ON so anyone can place a test order
+      # without Google. Set to "false" for a real production launch.
       - key: ALLOW_DEV_LOGIN
-        value: "false"
+        value: "true"
       # Render generates a strong secret once and reuses it (keeps logins valid across deploys).
       - key: JWT_SECRET
         generateValue: true
-      # Fill these in the Render dashboard (marked sync:false so they aren't committed).
+      # Fill these in the Render dashboard (sync:false = never committed to the repo).
       - key: ADMIN_EMAIL
         sync: false
       - key: ADMIN_PASSWORD
         sync: false
+      # Optional: set to turn on customer Google sign-in (also add the Render URL to the
+      # Google Cloud "Authorized JavaScript origins"). Leave unset to demo with guest login only.
       - key: GOOGLE_CLIENT_ID
         sync: false
       - key: ADMIN_GOOGLE_EMAILS
