@@ -83,6 +83,15 @@ body {
 .reveal-stagger.is-visible > *:nth-child(7) { transition-delay: 540ms; }
 .reveal-stagger.is-visible > *:nth-child(8) { transition-delay: 630ms; }
 
+/* ---------- page transition (fades + rises in on every route change) ---------- */
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+.page-enter {
+  animation: pageEnter 420ms var(--ease-warm) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
@@ -90,5 +99,5 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .reveal, .reveal-stagger > * { opacity: 1; transform: none; }
+  .reveal, .reveal-stagger > *, .page-enter { opacity: 1; transform: none; }
 }

@@ -23,8 +23,25 @@ function ScrollToTop() {
 }
 
 export default function App() {
+  const { pathname } = useLocation();
   return (
     <>
+      {/* warm hero-image backdrop shown behind every page (sits under all content) */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 -z-10"
+        style={{
+          backgroundColor: '#FAF5EC',
+          backgroundImage:
+            'radial-gradient(1200px 720px at 84% -4%, rgba(216,169,91,.24), transparent 60%),' +
+            'radial-gradient(1000px 760px at -6% 106%, rgba(155,100,53,.16), transparent 60%),' +
+            'linear-gradient(rgba(250,245,236,.85), rgba(250,245,236,.91)),' +
+            "url('/assets/menu/cappuccino.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
       <a
         href="#main"
         className="absolute -top-12 left-4 z-[100] rounded-b-xl bg-espresso px-4.5 py-2.5 text-sm font-semibold text-cream transition-all focus:top-0"
@@ -34,19 +51,22 @@ export default function App() {
       <ScrollToTop />
       <Header />
       <main id="main">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/menu" element={<MenuPage />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
-          <Route path="/orders/:id" element={<ProtectedRoute><OrderConfirmation /></ProtectedRoute>} />
-          <Route path="/account/orders" element={<ProtectedRoute><Orders /></ProtectedRoute>} />
-          <Route path="/admin" element={<ProtectedRoute adminOnly><Admin /></ProtectedRoute>} />
-          <Route path="*" element={<Home />} />
-        </Routes>
+        {/* keyed by route so each page fades + rises in on navigation */}
+        <div key={pathname} className="page-enter">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/menu" element={<MenuPage />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
+            <Route path="/orders/:id" element={<ProtectedRoute><OrderConfirmation /></ProtectedRoute>} />
+            <Route path="/account/orders" element={<ProtectedRoute><Orders /></ProtectedRoute>} />
+            <Route path="/admin" element={<ProtectedRoute adminOnly><Admin /></ProtectedRoute>} />
+            <Route path="*" element={<Home />} />
+          </Routes>
+        </div>
       </main>
       <Footer />
       <CartDrawer />
