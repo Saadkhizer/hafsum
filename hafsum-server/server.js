@@ -199,7 +199,7 @@ if (servingFrontend) {
 
 app.listen(ENV.port, () => {
   console.log(`\n🍰 Hafsum order API on http://localhost:${ENV.port}`);
-  console.log(`   Frontend:     ${servingFrontend ? 'served from hafsum-react/dist' : 'NOT built (dev mode — run Vite on :5173)'}`);
+  console.log(`   Frontend:     ${servingFrontend ? 'served from hafsum-react/dist' : 'NOT built (dev mode — run Vite on :5175)'}`);
   console.log(`   Google login: ${ENV.googleClientId ? 'enabled' : 'OFF (using dev login)'}`);
   console.log(`   Dev login:    ${ENV.allowDevLogin ? 'enabled' : 'off'}`);
   console.log(`   Admin email:  ${ENV.adminEmail || '(not set)'}\n`);

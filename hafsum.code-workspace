@@ -1,0 +1,55 @@
+{
+  "folders": [
+    { "path": "hafsum-server", "name": "hafsum-server" },
+    { "path": "hafsum-react", "name": "hafsum-react" }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/node_modules": true
+    },
+    "terminal.integrated.cwd": "${workspaceFolder}"
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "1) Backend — order API on :4000",
+        "type": "shell",
+        "command": "npm run dev",
+        "options": { "cwd": "${workspaceFolder:hafsum-server}" },
+        "isBackground": true,
+        "presentation": {
+          "group": "hafsum",
+          "panel": "dedicated",
+          "reveal": "always",
+          "focus": false
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "2) Frontend — website on :5175",
+        "type": "shell",
+        "command": "npm run dev",
+        "options": { "cwd": "${workspaceFolder:hafsum-react}" },
+        "isBackground": true,
+        "presentation": {
+          "group": "hafsum",
+          "panel": "dedicated",
+          "reveal": "always",
+          "focus": false
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "▶ Start Hafsum (backend + frontend)",
+        "dependsOn": [
+          "1) Backend — order API on :4000",
+          "2) Frontend — website on :5175"
+        ],
+        "dependsOrder": "parallel",
+        "group": { "kind": "build", "isDefault": true },
+        "problemMatcher": []
+      }
+    ]
+  }
+}
