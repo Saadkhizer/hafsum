@@ -22,9 +22,25 @@ export function CartProvider({ children }) {
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
   }, [cart]);
 
+  // Lock background scroll while the tray is open. `overflow: hidden` alone
+  // doesn't stop touch scrolling on iOS Safari, so pin the body in place too.
   useEffect(() => {
-    document.body.style.overflow = drawerOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    if (!drawerOpen) return;
+    const scrollY = window.scrollY;
+    const { body } = document;
+    body.style.position = 'fixed';
+    body.style.top = `-${scrollY}px`;
+    body.style.left = '0';
+    body.style.right = '0';
+    body.style.overflow = 'hidden';
+    return () => {
+      body.style.position = '';
+      body.style.top = '';
+      body.style.left = '';
+      body.style.right = '';
+      body.style.overflow = '';
+      window.scrollTo(0, scrollY);
+    };
   }, [drawerOpen]);
 
   // Demo mode for client previews/screenshots: /menu?demo=cart fills the tray.
