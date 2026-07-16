@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
@@ -18,7 +18,12 @@ import Admin from './pages/Admin.jsx';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
-  useEffect(() => window.scrollTo(0, 0), [pathname]);
+  // useLayoutEffect (not useEffect) so the jump happens before the new route
+  // paints - on iOS Safari a post-paint scrollTo can leave the fixed header
+  // and cart tray briefly misaligned from the viewport edge during the jump.
+  // behavior: 'instant' overrides the global `scroll-behavior: smooth`, which
+  // would otherwise animate this reset like a user-triggered scroll.
+  useLayoutEffect(() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' }), [pathname]);
   return null;
 }
 
