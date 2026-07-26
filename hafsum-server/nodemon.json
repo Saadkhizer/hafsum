@@ -1,0 +1,4 @@
+{
+  "comment": "Don't restart the dev server when the data file changes — orders, logins and resets all write db.json, and restarting on every write causes a reload loop (and a port-rebind crash).",
+  "ignore": ["db.json", "db.corrupt-*.json"]
+}

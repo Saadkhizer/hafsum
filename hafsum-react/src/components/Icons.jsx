@@ -23,6 +23,18 @@ export const Bag = (p) => (
 export const Search = (p) => (
   <svg viewBox="0 0 24 24" {...base} strokeWidth="2" {...p}><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
 );
+export const Eye = (p) => (
+  <svg viewBox="0 0 24 24" {...base} strokeWidth="1.8" {...p}>
+    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" /><circle cx="12" cy="12" r="3" />
+  </svg>
+);
+export const EyeOff = (p) => (
+  <svg viewBox="0 0 24 24" {...base} strokeWidth="1.8" {...p}>
+    <path d="M10.6 10.6a3 3 0 0 0 4.24 4.24" />
+    <path d="M9.9 4.24A9.1 9.1 0 0 1 12 5c6.5 0 10 7 10 7a13.5 13.5 0 0 1-2.16 2.92M6.1 6.1A13.4 13.4 0 0 0 2 12s3.5 7 10 7a9.1 9.1 0 0 0 3.6-.73" />
+    <path d="M3 3l18 18" />
+  </svg>
+);
 export const Star = (p) => (
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...p}>
     <path d="M12 2l2.95 6.32 6.91.83-5.12 4.72 1.36 6.84L12 17.27l-6.1 3.44 1.36-6.84-5.12-4.72 6.91-.83L12 2z" />

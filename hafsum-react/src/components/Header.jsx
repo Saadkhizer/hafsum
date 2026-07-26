@@ -44,7 +44,7 @@ export default function Header() {
         scrolled ? 'bg-cream/90 shadow-soft backdrop-blur-md' : ''
       }`}
     >
-      <div className="mx-auto flex h-[78px] max-w-7xl items-center justify-between gap-6 px-6">
+      <div className="mx-auto flex h-[78px] max-w-7xl items-center justify-between gap-6 px-6 max-[920px]:gap-3 max-[520px]:px-4">
         <Brand />
 
         <nav aria-label="Main navigation">
@@ -76,7 +76,7 @@ export default function Header() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex shrink-0 items-center gap-2.5">
           <AccountMenu />
           <button
             onClick={openCart}

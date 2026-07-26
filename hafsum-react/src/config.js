@@ -19,7 +19,10 @@ export const CONFIG = {
   // Order backend. In dev the Vite proxy forwards /api → http://localhost:4000,
   // so the default empty base (same-origin) works. Override with VITE_API_URL if hosted elsewhere.
   apiUrl: import.meta.env.VITE_API_URL || '',
-  // Real Google sign-in turns on automatically once this is set (see hafsum-server/README.md).
+  // Optional build-time fallback only. The Client ID normally comes from the server's
+  // /api/config at runtime (see ServerConfigContext) — set GOOGLE_CLIENT_ID there and the
+  // Google button turns on with no frontend rebuild. This is used only if /api/config
+  // can't be reached. See hafsum-server/README.md.
   googleClientId: import.meta.env.VITE_GOOGLE_CLIENT_ID || '',
 };
 

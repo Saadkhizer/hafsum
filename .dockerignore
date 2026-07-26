@@ -1,0 +1,18 @@
+# Start by excluding everything, then re-include only the two app folders.
+# Keeps the build context tiny and free of the other projects in this repo.
+*
+
+!hafsum-react
+!hafsum-server
+
+# Never copy these into the image (reinstalled/rebuilt in the Dockerfile).
+hafsum-react/node_modules
+hafsum-server/node_modules
+hafsum-react/dist
+
+# Secrets & customer data must never be baked into an image.
+**/.env
+**/.env.*
+!**/.env.example
+**/db.json
+**/db.corrupt-*.json

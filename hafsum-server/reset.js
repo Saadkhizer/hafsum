@@ -6,8 +6,8 @@
 //   npm run reset:orders                → clear orders only, keep accounts
 //   (or: node reset.js --keep-accounts)
 import { readFileSync, writeFileSync } from 'node:fs';
+import { DB_PATH } from './paths.js';
 
-const DB_PATH = new URL('./db.json', import.meta.url);
 const keepAccounts = process.argv.includes('--keep-accounts');
 
 // Try to read existing data; tolerate a missing or corrupted file.

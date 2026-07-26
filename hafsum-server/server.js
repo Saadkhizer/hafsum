@@ -2,6 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import { nanoid } from 'nanoid';
 import { OAuth2Client } from 'google-auth-library';
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
 
 import { ENV, SHOP } from './config.js';
 import { db, save } from './db.js';
@@ -174,8 +177,29 @@ app.patch('/api/admin/orders/:id', adminRequired, async (req, res) => {
   res.json({ order });
 });
 
+// Any unmatched /api route answers with JSON (never the SPA's HTML).
+app.use('/api', (_req, res) => res.status(404).json({ error: 'Not found.' }));
+
+// ---------------------------------------------------------------- serve the built frontend (production)
+// In production we serve the React build from this same server, so the site is a
+// single origin (no CORS), a single deploy, and a single domain/bill. The frontend's
+// API calls are same-origin (`/api/...`), so nothing extra needs configuring.
+// In dev this block is skipped automatically — Vite serves the UI on :5173 and proxies
+// /api here — because hafsum-react/dist/ only exists after `npm run build`.
+const distDir = fileURLToPath(new URL('../hafsum-react/dist', import.meta.url));
+const indexHtml = path.join(distDir, 'index.html');
+const servingFrontend = existsSync(indexHtml);
+
+if (servingFrontend) {
+  app.use(express.static(distDir));
+  // SPA fallback: client-side routes (e.g. /menu, /orders/:id) have no file on disk,
+  // so hand them index.html and let React Router take over.
+  app.get('*', (_req, res) => res.sendFile(indexHtml));
+}
+
 app.listen(ENV.port, () => {
   console.log(`\n🍰 Hafsum order API on http://localhost:${ENV.port}`);
+  console.log(`   Frontend:     ${servingFrontend ? 'served from hafsum-react/dist' : 'NOT built (dev mode — run Vite on :5175)'}`);
   console.log(`   Google login: ${ENV.googleClientId ? 'enabled' : 'OFF (using dev login)'}`);
   console.log(`   Dev login:    ${ENV.allowDevLogin ? 'enabled' : 'off'}`);
   console.log(`   Admin email:  ${ENV.adminEmail || '(not set)'}\n`);

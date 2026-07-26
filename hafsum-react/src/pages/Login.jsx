@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
-import { CONFIG } from '../config.js';
+import { useServerConfig } from '../context/ServerConfigContext.jsx';
 import Button from '../components/Button.jsx';
 import GoogleButton from '../components/GoogleButton.jsx';
-import { Cup } from '../components/Icons.jsx';
+import { Cup, Eye, EyeOff } from '../components/Icons.jsx';
 
 export default function Login() {
   const { loginWithGoogle, devLogin, adminLogin } = useAuth();
+  const { ready, googleEnabled, devLoginEnabled } = useServerConfig();
   const [params] = useSearchParams();
   const navigate = useNavigate();
 
@@ -20,6 +21,7 @@ export default function Login() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const run = async (fn, dest) => {
     setBusy(true);
@@ -66,34 +68,51 @@ export default function Login() {
         )}
 
         {tab === 'customer' ? (
+          !ready ? (
+            <p className="py-6 text-center text-[13.5px] text-muted">Loading sign-in options…</p>
+          ) : (
           <div className="grid gap-4">
-            <GoogleButton onCredential={(cred) => run(() => loginWithGoogle(cred), next)} onError={setError} />
+            {googleEnabled && (
+              <GoogleButton onCredential={(cred) => run(() => loginWithGoogle(cred), next)} onError={setError} />
+            )}
 
-            {CONFIG.googleClientId && (
+            {googleEnabled && devLoginEnabled && (
               <div className="flex items-center gap-3 text-[12.5px] text-muted">
                 <span className="h-px flex-1 bg-line" />or<span className="h-px flex-1 bg-line" />
               </div>
             )}
 
-            <div className="grid gap-2.5">
-              <label className="text-[13px] font-semibold text-espresso-soft" htmlFor="dev-name">
-                {CONFIG.googleClientId ? 'Continue without Google' : 'Your name'}
-              </label>
-              <input
-                id="dev-name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="e.g. Ayesha Khan"
-                className="min-h-[48px] rounded-xl border-[1.5px] border-line bg-cream px-4 text-[15px] focus:border-caramel focus:outline-none"
-              />
-              <Button variant="caramel" disabled={busy} onClick={() => run(() => devLogin(name || 'Guest'), next)}>
-                {busy ? 'Signing in…' : 'Continue to order'}
-              </Button>
-            </div>
-            <p className="text-center text-[12px] text-muted">
-              A quick guest sign-in for now — connect Google any time.
-            </p>
+            {devLoginEnabled && (
+              <div className="grid gap-2.5">
+                <label className="text-[13px] font-semibold text-espresso-soft" htmlFor="dev-name">
+                  {googleEnabled ? 'Continue without Google' : 'Your name'}
+                </label>
+                <input
+                  id="dev-name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="e.g. Ayesha Khan"
+                  className="min-h-[48px] rounded-xl border-[1.5px] border-line bg-cream px-4 text-[15px] focus:border-caramel focus:outline-none"
+                />
+                <Button variant="caramel" disabled={busy} onClick={() => run(() => devLogin(name || 'Guest'), next)}>
+                  {busy ? 'Signing in…' : 'Continue to order'}
+                </Button>
+              </div>
+            )}
+
+            {!googleEnabled && devLoginEnabled && (
+              <p className="text-center text-[12px] text-muted">
+                A quick guest sign-in for now — connect Google any time.
+              </p>
+            )}
+
+            {!googleEnabled && !devLoginEnabled && (
+              <p className="py-6 text-center text-[13.5px] text-muted">
+                Customer sign-in isn’t available right now. Please contact the shop to place your order.
+              </p>
+            )}
           </div>
+          )
         ) : (
           <form
             className="grid gap-3"
@@ -105,11 +124,21 @@ export default function Login() {
               placeholder="Shop email" autoComplete="username" required
               className="min-h-[48px] rounded-xl border-[1.5px] border-line bg-cream px-4 text-[15px] focus:border-caramel focus:outline-none"
             />
-            <input
-              type="password" value={password} onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password" autoComplete="current-password" required
-              className="min-h-[48px] rounded-xl border-[1.5px] border-line bg-cream px-4 text-[15px] focus:border-caramel focus:outline-none"
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? 'text' : 'password'} value={password} onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password" autoComplete="current-password" required
+                className="min-h-[48px] w-full rounded-xl border-[1.5px] border-line bg-cream px-4 pr-12 text-[15px] focus:border-caramel focus:outline-none"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((v) => !v)}
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+                className="absolute inset-y-0 right-0 grid w-12 cursor-pointer place-items-center text-muted transition-colors hover:text-espresso"
+              >
+                {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+              </button>
+            </div>
             <Button variant="primary" type="submit" disabled={busy}>
               {busy ? 'Signing in…' : 'Open order console'}
             </Button>

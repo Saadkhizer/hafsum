@@ -38,10 +38,13 @@ npm run dev                 # http://localhost:5173  (proxies /api → :4000)
 4. Under **Authorized JavaScript origins** add:
    - `http://localhost:5173`
    - (and your production URL later, e.g. `https://hafsum.co`)
-5. Copy the **Client ID** (looks like `xxxxx.apps.googleusercontent.com`) and paste it into:
-   - `hafsum-server/.env`  → `GOOGLE_CLIENT_ID=...`
-   - `hafsum-react/.env`   → `VITE_GOOGLE_CLIENT_ID=...`
-6. Restart both servers. The real **Sign in with Google** button now appears on `/login`.
+5. Copy the **Client ID** (looks like `xxxxx.apps.googleusercontent.com`) and paste it
+   into **one** place — `hafsum-server/.env` → `GOOGLE_CLIENT_ID=...`. The frontend
+   reads it from `/api/config` at runtime, so there's nothing to set on the frontend
+   and **no rebuild** to do. (The optional `VITE_GOOGLE_CLIENT_ID` in `hafsum-react/.env`
+   is only a fallback for when the API can't be reached.)
+6. Restart the server. The real **Sign in with Google** button now appears on `/login`.
+   Sanity check: `GET /api/config` should show `"googleEnabled": true`.
 
 To make a Google account shop staff, add its email to `ADMIN_GOOGLE_EMAILS` (comma list)
 in `.env` — that account is auto-promoted to admin on next sign-in.
