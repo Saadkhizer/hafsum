@@ -23,7 +23,9 @@ function ScrollToTop() {
   // and cart tray briefly misaligned from the viewport edge during the jump.
   // behavior: 'instant' overrides the global `scroll-behavior: smooth`, which
   // would otherwise animate this reset like a user-triggered scroll.
-  useLayoutEffect(() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' }), [pathname]);
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [pathname]);
   return null;
 }
 
