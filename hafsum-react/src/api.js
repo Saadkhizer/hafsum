@@ -26,7 +26,12 @@ export async function api(path, { method = 'GET', body, auth = true } = {}) {
     throw new Error('Cannot reach the order server. Is it running?');
   }
 
-  const data = await res.json().catch(() => ({}));
+  let data;
+  try {
+    data = await res.json();
+  } catch {
+    throw new Error('Unexpected response from the server — check that the API is reachable.');
+  }
   if (!res.ok) throw new Error(data.error || `Request failed (${res.status}).`);
   return data;
 }
