@@ -18,7 +18,14 @@ export const ENV = {
   // On hosts with ephemeral disks (Render/Railway/Docker), point this at a mounted
   // volume so orders & accounts survive redeploys.
   dataDir: process.env.DATA_DIR || '',
-  jwtSecret: process.env.JWT_SECRET || 'dev-insecure-secret',
+  jwtSecret: (() => {
+    if (process.env.JWT_SECRET) return process.env.JWT_SECRET;
+    if (process.env.NODE_ENV === 'production') {
+      throw new Error('JWT_SECRET must be set in production. Refusing to start with an insecure default.');
+    }
+    console.warn('⚠️  JWT_SECRET not set — using an insecure development-only secret. Set JWT_SECRET before deploying.');
+    return 'dev-insecure-secret';
+  })(),
   // Customer Google sign-in. Empty = Google login is OFF (the dev login still works).
   // Set this to a real OAuth Client ID from Google Cloud Console to turn it on. The
   // frontend reads this value from /api/config, so flipping it on needs no frontend

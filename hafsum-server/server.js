@@ -10,19 +10,32 @@ import { ENV, SHOP } from './config.js';
 import { db, save } from './db.js';
 import { priceCart } from './menu.js';
 import { signToken, authRequired, adminRequired } from './auth.js';
+import { rateLimit } from './rateLimit.js';
 
 const app = express();
+app.set('trust proxy', 1); // Render sits in front as a reverse proxy — needed for req.ip to be real
 app.use(cors());
 app.use(express.json());
+
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  message: 'Too many login attempts. Please try again in a few minutes.',
+});
 
 const googleClient = ENV.googleClientId ? new OAuth2Client(ENV.googleClientId) : null;
 const VALID_STATUS = ['pending', 'accepted', 'rejected', 'preparing', 'ready', 'completed'];
 
-/** Find-or-create a user record, returning the stored user. */
-async function upsertUser({ email, name, picture, googleId }) {
+/** Find-or-create a user record, returning the stored user.
+ *  `verified` must be true only when the caller has cryptographically confirmed
+ *  this email belongs to the person logging in (i.e. Google's ID token). The
+ *  dev/demo login lets a visitor type ANY email with zero proof of ownership —
+ *  if that were allowed to match the admin whitelist too, anyone could self-declare
+ *  the shop owner's email and get an admin session with no password at all. */
+async function upsertUser({ email, name, picture, googleId, verified = false }) {
   const lower = email.toLowerCase();
   let user = db.data.users.find((u) => u.email === lower);
-  const isAdmin = ENV.adminGoogleEmails.includes(lower);
+  const isAdmin = verified && ENV.adminGoogleEmails.includes(lower);
   if (!user) {
     user = { id: nanoid(10), email: lower, name, picture: picture || '', role: isAdmin ? 'admin' : 'customer', googleId, createdAt: Date.now() };
     db.data.users.push(user);
@@ -53,13 +66,13 @@ app.get('/api/config', (_req, res) => {
 
 // ---------------------------------------------------------------- auth
 // Customer login with a Google ID token (credential from Google Identity Services).
-app.post('/api/auth/google', async (req, res) => {
+app.post('/api/auth/google', loginLimiter, async (req, res) => {
   try {
     if (!googleClient) return res.status(400).json({ error: 'Google login is not configured on this server.' });
     const { credential } = req.body;
     const ticket = await googleClient.verifyIdToken({ idToken: credential, audience: ENV.googleClientId });
     const p = ticket.getPayload();
-    const user = await upsertUser({ email: p.email, name: p.name, picture: p.picture, googleId: p.sub });
+    const user = await upsertUser({ email: p.email, name: p.name, picture: p.picture, googleId: p.sub, verified: true });
     res.json({ token: signToken(user), user: publicUser(user) });
   } catch (err) {
     console.error('google auth failed:', err.message);
@@ -68,7 +81,7 @@ app.post('/api/auth/google', async (req, res) => {
 });
 
 // No-setup demo login so the whole flow is testable without a Google Client ID.
-app.post('/api/auth/dev', async (req, res) => {
+app.post('/api/auth/dev', loginLimiter, async (req, res) => {
   if (!ENV.allowDevLogin) return res.status(403).json({ error: 'Dev login is disabled.' });
   const name = (req.body?.name || 'Demo Customer').toString().slice(0, 60);
   const email = (req.body?.email || 'demo@hafsum.test').toString().toLowerCase().slice(0, 80);
@@ -77,7 +90,7 @@ app.post('/api/auth/dev', async (req, res) => {
 });
 
 // Shop staff login with the configured admin email + password.
-app.post('/api/admin/login', async (req, res) => {
+app.post('/api/admin/login', loginLimiter, async (req, res) => {
   const email = (req.body?.email || '').toLowerCase();
   const password = req.body?.password || '';
   if (!ENV.adminPassword || email !== ENV.adminEmail || password !== ENV.adminPassword) {
