@@ -20,7 +20,7 @@ Then start the frontend in another terminal:
 ```bash
 cd hafsum-react
 npm install
-npm run dev                 # http://localhost:5173  (proxies /api → :4000)
+npm run dev                 # http://localhost:5175  (proxies /api → :4000)
 ```
 
 ### Logins out of the box
@@ -36,7 +36,8 @@ npm run dev                 # http://localhost:5173  (proxies /api → :4000)
 3. **APIs & Services → Credentials → Create credentials → OAuth client ID**
    → Application type **Web application**.
 4. Under **Authorized JavaScript origins** add:
-   - `http://localhost:5173`
+   - `http://localhost:5175` (frontend dev server) and `http://localhost:4000` (this
+     server also serves the built frontend on its own port)
    - (and your production URL later, e.g. `https://hafsum.co`)
 5. Copy the **Client ID** (looks like `xxxxx.apps.googleusercontent.com`) and paste it
    into **one** place — `hafsum-server/.env` → `GOOGLE_CLIENT_ID=...`. The frontend
@@ -87,3 +88,11 @@ Order statuses: `pending → accepted → preparing → ready → completed` (or
   an API, `PATCH /api/admin/orders/:id` is the hook to forward accepted orders onward.
 - Item prices/ids are imported straight from `hafsum-react/src/data/menu.js`, so the
   server always re-prices orders against the same menu the customer saw.
+- **`JWT_SECRET` is required in production** — the server refuses to start with the
+  insecure default if `NODE_ENV=production` and it isn't set. Set a long random string
+  in `.env` (or your host's env vars) before deploying.
+- Login endpoints (`/api/auth/google`, `/api/auth/dev`, `/api/admin/login`) are
+  rate-limited (10 attempts / 15 min per IP) to slow down brute-force and spam. Dev-login
+  emails can never be granted admin — only a Google-verified email on
+  `ADMIN_GOOGLE_EMAILS` is, since dev login lets a visitor type any email with no proof
+  of ownership.
